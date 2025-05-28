@@ -3,10 +3,10 @@ import Header from '../components/estaticos/Header'
 import Footer from '../components/estaticos/Footer'
 import '../components/estaticos/forms.css'
 
-const Contacto = ({carrito, eliminarDelCarrito}) => {
+const Contacto = ({carrito, eliminarDelCarrito, vaciarCarrito}) => {
   return (
       <>
-    <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} />
+    <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} vaciarCarrito={vaciarCarrito} />
     <main>
       <h1>Contacto</h1>
       <p>Si tienes alguna pregunta, no dudes en ponerte en contacto con nosotros.</p>

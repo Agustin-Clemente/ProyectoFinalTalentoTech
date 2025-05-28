@@ -3,10 +3,10 @@ import Header from '../components/estaticos/Header'
 import Footer from '../components/estaticos/Footer'
 import '../components/estaticos/styleEstatico.css'
 
-const AcercaDe = ({ carrito, eliminarDelCarrito }) => {
+const AcercaDe = ({ carrito, eliminarDelCarrito, vaciarCarrito }) => {
   return (
     <>
-      <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} />
+      <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} vaciarCarrito={vaciarCarrito} />
       <main>
         <h1>Acerca de</h1>
 

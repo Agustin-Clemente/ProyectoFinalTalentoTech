@@ -4,7 +4,7 @@ import Header from './estaticos/Header';
 import Footer from './estaticos/Footer';
 import './styleProductos.css';
 
-const DetalleProducto = ({ productos, carrito, eliminarDelCarrito, agregarAlCarrito }) => {
+const DetalleProducto = ({ productos, carrito, eliminarDelCarrito, agregarAlCarrito, vaciarCarrito }) => {
 
     const { id } = useParams();
     const producto = productos.find(item => item.id === id);
@@ -25,7 +25,7 @@ const DetalleProducto = ({ productos, carrito, eliminarDelCarrito, agregarAlCarr
 
     return (
         <>
-            <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} />
+            <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} vaciarCarrito={vaciarCarrito} />
 
             <main>
                 <h1>Detalles del producto: {id}</h1>
@@ -48,8 +48,8 @@ const DetalleProducto = ({ productos, carrito, eliminarDelCarrito, agregarAlCarr
                                 <button className='cantidadBtn' onClick={aumentar}>+</button>
                             </div>
 
-                            <button onClick={() => agregarAlCarrito(producto, cantidad)}>Añadir al carrito</button>
-                            <button style={{ marginTop: '12px' }}><Link to="/" style={{ color: 'white' }}>Volver al inicio</Link></button>
+                            <button className='cantidadBtn' onClick={() => agregarAlCarrito(producto, cantidad)}>Añadir al carrito</button>
+                            <button className='cantidadBtn' style={{ marginTop: '12px' }}><Link to="/" style={{ color: 'white' }}>Volver al inicio</Link></button>
                         </section>
 
 
@@ -58,7 +58,7 @@ const DetalleProducto = ({ productos, carrito, eliminarDelCarrito, agregarAlCarr
                 ) : (
                     <>
                         <p>Producto no encontrado</p>
-                        <button><Link to="/">Volver al inicio</Link></button>
+                        <button style={{ marginTop: '12px' }}><Link to="/" style={{ color: 'white' }}>Volver al inicio</Link></button>
                     </>
                 )}
             </main>

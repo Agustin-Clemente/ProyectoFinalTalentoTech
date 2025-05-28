@@ -4,7 +4,7 @@ import './styleEstatico.css'
 import { useState } from 'react'
 import Carrito from '../Carrito'
 
-const Header = ({ carritoItems, eliminarDelCarrito }) => {
+const Header = ({ carritoItems, eliminarDelCarrito, vaciarCarrito }) => {
 
   const [carritoOpen, setCarritoOpen] = useState(false);
   const toggleCarrito = () => {
@@ -27,8 +27,8 @@ const toggleMenu = () => setMenuOpen(!menuOpen);
           <li><Link to="/productos" className='link'>Galería de productos</Link></li>
           <li><Link to="/contacto" className='link'>Contacto</Link></li>
           <li>
-            <button className='btn-carrito' onClick={toggleCarrito}>Carrito</button>
-            <Carrito eliminarDelCarrito={eliminarDelCarrito} carritoItems={carritoItems} isOpen={carritoOpen} onClose={toggleCarrito}></Carrito>
+            <button className='btn-carrito' onClick={toggleCarrito}><i className="fa-solid fa-cart-shopping"></i></button>
+            <Carrito eliminarDelCarrito={eliminarDelCarrito} vaciarCarrito={vaciarCarrito} carritoItems={carritoItems} isOpen={carritoOpen} onClose={toggleCarrito}></Carrito>
           </li>
         </ul>
       </nav>

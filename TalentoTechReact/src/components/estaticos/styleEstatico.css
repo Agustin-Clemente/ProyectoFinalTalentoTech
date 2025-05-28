@@ -48,12 +48,16 @@ footer{
 }
 
 .btn-carrito {
-    background-color: #007bff;
+    background-color: #d32f2f;
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.btn-carrito:hover {
+    background-color: #b71c1c;
 }
 
 .acerca-de{

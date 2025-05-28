@@ -3,6 +3,11 @@ import { Navigate } from 'react-router-dom'
 
 const RutaProtegida = ({isAuthenticated, children}) => {
     if (!isAuthenticated) {
+      Swal.fire({
+  icon: "error",
+  title: "Debes iniciar sesión para ver esta página",
+  text: "Serás redirigido a la página de inicio de sesión.",
+});
         return <Navigate to="/login" replace />
     }
   return (
