@@ -94,7 +94,8 @@ function App() {
     if (result.isConfirmed) {
       Swal.fire({
         title: "Producto eliminado",
-        icon: "success"
+        icon: "success",
+        confirmButtonColor: "#1565c0"
       });
       setCarrito(prevCarrito => {
         return prevCarrito.filter(item => item.id !== producto.id);
@@ -116,7 +117,8 @@ function App() {
     if (result.isConfirmed) {
       Swal.fire({
         title: "Carrito vaciado",
-        icon: "success"
+        icon: "success",
+        confirmButtonColor: "#1565c0"
       });
     setCarrito([]);
     }
