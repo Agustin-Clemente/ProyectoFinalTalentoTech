@@ -8,7 +8,6 @@ const Galeria = ({productos, cargando, carrito, agregarAlCarrito, eliminarDelCar
       <>
     <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} />
     <main>
-       <div>Galeria</div>
        {
           cargando ? (
             <p>Cargando productos...</p>
