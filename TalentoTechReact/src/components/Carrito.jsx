@@ -29,14 +29,9 @@ const Carrito = ({ carritoItems, isOpen, onClose, eliminarDelCarrito, vaciarCarr
 
                         ))
                         }
-                    </ul>
-                ) : (
-                    <p style={{ color: "#d32f2f", textAlign: "center" }}>No hay productos en el carrito.</p>
-                )}
-            </div>
-            {carritoItems.length > 0 ?
-                <>
-                    <div className='carrito-total'>
+                        <li>
+
+                           <div className='carrito-total'>
                         <h3>Total: ${total.toFixed(2)}</h3>
 
 
@@ -44,9 +39,15 @@ const Carrito = ({ carritoItems, isOpen, onClose, eliminarDelCarrito, vaciarCarr
 
 
                         <button className='btn-carrito' style={{ marginTop: '12px' }} onClick={() => vaciarCarrito()}>Vaciar carrito</button>
-                        </div>
-                    </> 
-                : null}
+                        </div>  
+                        </li>
+                    </ul>
+                   
+                    
+                ) : (
+                    <p style={{ color: "#d32f2f", textAlign: "center" }}>No hay productos en el carrito.</p>
+                )}
+            </div>
                 
         </div>
     )
