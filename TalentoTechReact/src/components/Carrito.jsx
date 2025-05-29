@@ -14,7 +14,7 @@ const Carrito = ({ carritoItems, isOpen, onClose, eliminarDelCarrito, vaciarCarr
 
             <div className='carrito-content'>
                 {carritoItems.length > 0 ? (
-                    console.log(carritoItems),
+
                     <ul className='carrito-items'>
                         {carritoItems.map((item, index) => (
 
