@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './styleCarrito.css'
+import { CartContext } from '../context/CartContext'
 
-const Carrito = ({ carritoItems, isOpen, onClose, eliminarDelCarrito, vaciarCarrito }) => {
+const Carrito = ({ isOpen, onClose }) => {
 
-    const total = carritoItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+      const { carrito, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);
+
+
+    const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
 
     return (
         <div className={`carrito-drawer ${isOpen ? 'open' : ''}`}>
@@ -13,10 +17,10 @@ const Carrito = ({ carritoItems, isOpen, onClose, eliminarDelCarrito, vaciarCarr
             </div>
 
             <div className='carrito-content'>
-                {carritoItems.length > 0 ? (
+                {carrito.length > 0 ? (
 
                     <ul className='carrito-items'>
-                        {carritoItems.map((item, index) => (
+                        {carrito.map((item, index) => (
 
                             <li key={index}>
                                 <img src={item.foto} alt={item.nombre} />

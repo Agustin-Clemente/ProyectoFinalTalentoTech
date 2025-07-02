@@ -6,7 +6,7 @@ import '../components/estaticos/styleEstatico.css'
 const AcercaDe = ({ carrito, eliminarDelCarrito, vaciarCarrito }) => {
   return (
     <>
-      <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} vaciarCarrito={vaciarCarrito} />
+      <Header />
       <main>
         <h1>Acerca de</h1>
 

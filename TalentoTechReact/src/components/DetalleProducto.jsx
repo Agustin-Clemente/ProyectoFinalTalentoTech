@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Header from './estaticos/Header';
 import Footer from './estaticos/Footer';
 import './styleProductos.css';
+import { CartContext } from '../context/CartContext';
 
-const DetalleProducto = ({ productos, carrito, eliminarDelCarrito, agregarAlCarrito, vaciarCarrito }) => {
+const DetalleProducto = () => {
+
+    const {productos, agregarAlCarrito} = useContext(CartContext);
+      
+    
 
     const { id } = useParams();
     const producto = productos.find(item => item.id === id);
@@ -25,7 +30,7 @@ const DetalleProducto = ({ productos, carrito, eliminarDelCarrito, agregarAlCarr
 
     return (
         <>
-            <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} vaciarCarrito={vaciarCarrito} />
+            <Header />
 
             <main>
                 <h1>Detalles del producto: {id}</h1>

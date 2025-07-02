@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../components/estaticos/Header'
 import Footer from '../components/estaticos/Footer'
 import ProductList from '../components/ProductList'
 import Spinner from '../components/estaticos/Spinner'
+import { CartContext } from '../context/CartContext'
 
-const Home = ({ productos, cargando, carrito, agregarAlCarrito, eliminarDelCarrito, vaciarCarrito }) => {
+const Home = ({ agregarAlCarrito}) => {
+
+  const {cargando} = useContext(CartContext)
+
+
+
   return (
     <>
-      <Header carritoItems={carrito} eliminarDelCarrito={eliminarDelCarrito} vaciarCarrito={vaciarCarrito} />
+      <Header  />
       <main>
         <h1>Bienvenido a nuestro sitio web</h1>
         <p>Explora nuestros productos.</p>
@@ -19,7 +25,7 @@ const Home = ({ productos, cargando, carrito, agregarAlCarrito, eliminarDelCarri
             <h2>Cargando productos...</h2>
             </>
           ) : (
-            <ProductList productos={productos} agregarAlCarrito={agregarAlCarrito} />
+            <ProductList/>
           )
 }
         
