@@ -3,6 +3,7 @@ import './styleProductos.css'
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
+
 const Productos = ({producto}) => {
 
   const [cantidad, setCantidad] = useState(1);

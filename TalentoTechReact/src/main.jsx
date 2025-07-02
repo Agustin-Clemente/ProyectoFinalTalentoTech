@@ -6,18 +6,20 @@ import { CartProvider } from './context/CartContext.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { AdminProvider } from './context/AdminContext.jsx'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
-    <CartProvider>
-      <AdminProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </AdminProvider>
-    </CartProvider>
+      <CartProvider>
+        <AdminProvider>
+          <AuthProvider>
+            <App />
+            <ToastContainer />
+          </AuthProvider>
+        </AdminProvider>
+      </CartProvider>
     </Router>
   </StrictMode>,
 )

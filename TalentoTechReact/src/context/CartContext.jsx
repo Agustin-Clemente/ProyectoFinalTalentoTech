@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import {toast} from 'react-toastify';
 
 export const CartContext = createContext();
 
@@ -60,6 +61,10 @@ const productosFiltrados = productos.filter(producto =>
 );
 
 const agregarAlCarrito = (producto, cantidad) => {
+        toast.success(`Agregaste ${cantidad} ${producto.nombre} al carrito` , {
+          position: "bottom-right"
+        });
+
     Swal.fire({
   title: "¡Producto agregado!",
   icon: "success",
@@ -74,13 +79,16 @@ const agregarAlCarrito = (producto, cantidad) => {
         return prevCarrito.map(item =>
           item.id === producto.id ? { ...item, cantidad: item.cantidad + cantidad } : item
         );
+        
       } else {
         return [...prevCarrito, { ...producto, cantidad }];
+        
       }
     });
   }
 
   const eliminarDelCarrito = (producto) => {
+
   Swal.fire({
     title: "¿Confirmas que deseas eliminar este producto?",
     icon: "warning",
@@ -91,6 +99,10 @@ const agregarAlCarrito = (producto, cantidad) => {
     cancelButtonText: "Cancelar"
   }).then((result) => {
     if (result.isConfirmed) {
+        toast.error(`Eliminaste ${producto.nombre} del carrito` , {
+          position: "bottom-right"
+        });
+
       Swal.fire({
         title: "Producto eliminado",
         icon: "success",
