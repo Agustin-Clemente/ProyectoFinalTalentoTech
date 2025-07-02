@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Admin = () => {
 
     const { setIsAuth } = useContext(CartContext)
+    // const [open, setOpen] = useState(false);
 
     const {
         productos,
@@ -19,7 +20,7 @@ const Admin = () => {
         seleccionado,
         setSeleccionado,
         agregarProducto,
-        actulizarProducto,
+        actualizarProducto,
         eliminarProducto, 
     } = useContext(AdminContext)
 
@@ -53,7 +54,7 @@ const Admin = () => {
                         {productos.map((product) => (
                             <li key={product.id} className="listItem">
                                 <img
-                                    src={product.imagen}
+                                    src={product.foto}
                                     alt={product.nombre}
                                     className="listItemImage"
                                 />
@@ -74,7 +75,7 @@ const Admin = () => {
             )}
             <button onClick={() => setOpen(true)}>Agregar producto nuevo</button>
             {open && (<FormularioProducto onAgregar={agregarProducto} />)}
-            {openEditor && (<FormularioEdicion productoSeleccionado={seleccionado} onActualizar={actulizarProducto} />)}
+            {openEditor && (<FormularioEdicion productoSeleccionado={seleccionado} onActualizar={actualizarProducto} />)}
         </div>
     );
 };

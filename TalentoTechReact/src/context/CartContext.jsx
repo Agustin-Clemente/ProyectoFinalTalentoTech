@@ -129,7 +129,8 @@ export const CartProvider = ({ children }) => {
         isAuthenticated,
         agregarAlCarrito,
         eliminarDelCarrito,
-        vaciarCarrito
+        vaciarCarrito,
+        setIsAuthenticated
      }}>
       {children}
     </CartContext.Provider>

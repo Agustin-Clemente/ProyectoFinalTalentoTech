@@ -63,7 +63,7 @@ export const AdminProvider = ({ children }) => {
         }
     }
 
-    const actulizarProducto = async (producto) => {
+    const actualizarProducto = async (producto) => {
         try {
             const respuesta = await fetch(`${apiUrl}/${producto.id}`,
                 {
@@ -117,7 +117,7 @@ export const AdminProvider = ({ children }) => {
             seleccionado,
             setSeleccionado,
             agregarProducto,
-            actulizarProducto,
+            actualizarProducto,
             eliminarProducto,
         }}>
             {children}
