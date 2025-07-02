@@ -11,6 +11,7 @@ export const CartProvider = ({ children }) => {
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [busqueda, setBusqueda] = useState('')
 
  /*  useEffect(() => {
     fetch('https://655cc0a425b76d9884fde4c9.mockapi.io/prod')
@@ -54,7 +55,11 @@ export const CartProvider = ({ children }) => {
     })
 }, [])
 
-  const agregarAlCarrito = (producto, cantidad) => {
+const productosFiltrados = productos.filter(producto =>
+  producto?.nombre.toLowerCase().includes(busqueda.toLowerCase())
+);
+
+const agregarAlCarrito = (producto, cantidad) => {
     Swal.fire({
   title: "¡Producto agregado!",
   icon: "success",
@@ -130,7 +135,10 @@ export const CartProvider = ({ children }) => {
         agregarAlCarrito,
         eliminarDelCarrito,
         vaciarCarrito,
-        setIsAuthenticated
+        setIsAuthenticated,
+        busqueda,
+        setBusqueda,
+        productosFiltrados
      }}>
       {children}
     </CartContext.Provider>

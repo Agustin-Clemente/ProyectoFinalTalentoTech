@@ -18,7 +18,7 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
             onActualizar(producto)
         }}>
             <h2>Editar Producto</h2>
-            <div>
+            {/* <div>
                 <label>ID:</label>
                 <input
                     type="number"
@@ -27,7 +27,7 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
                     onChange={handleChange}
                     readOnly
                 />
-            </div>
+            </div> */}
             <div>
                 <label>Nombre:</label>
                 <input
@@ -50,7 +50,7 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
                 />
             </div>
             <div>
-                <label>stock:</label>
+                <label>Stock:</label>
                 <input
                     type="number"
                     name="stock"
@@ -60,21 +60,21 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
                 />
             </div>
             <div>
-                <label>Imagen URL:</label>
+                <label>Foto:</label>
                 <input
                     type="text"
-                    name="imagen"
-                    value={producto.imagen || ''}
+                    name="foto"
+                    value={producto.foto || ''}
                     onChange={handleChange}
                     required
                 />
             </div>
             <div>
-                <label>Categoria:</label>
+                <label>Descripción:</label>
                 <input
                     type="text"
-                    name="categoria"
-                    value={producto.categoria || ''}
+                    name="descripcionLarga"
+                    value={producto.descripcionLarga || ''}
                     onChange={handleChange}
                     required
                 />

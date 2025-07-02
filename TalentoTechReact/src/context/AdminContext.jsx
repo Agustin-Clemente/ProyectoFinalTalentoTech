@@ -39,7 +39,7 @@ export const AdminProvider = ({ children }) => {
 
     const agregarProducto = async (producto) => {
         try {
-            const respuesta = await fetch('https://655cc0a425b76d9884fde4c9.mockapi.io/productos', {
+            const respuesta = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ export const AdminProvider = ({ children }) => {
         const confirmar = window.confirm('Estas seguro de eliminar el producto?')
         if (confirmar) {
             try {
-                const respuesta = await fetch(`https://655cc0a425b76d9884fde4c9.mockapi.io/productos${id}`, {
+                const respuesta = await fetch(`${apiUrl}/${id}`, {
                     method: 'DELETE',
                 })
                 if (!respuesta.ok) throw Error('Error al eliminar')

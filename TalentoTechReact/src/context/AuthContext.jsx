@@ -8,12 +8,12 @@ export const AuthProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const { setIsAuth } = useContext(CartContext)
+  const { setIsAuthenticated } = useContext(CartContext)
 
   useEffect(()=>{
     const isAuthenticated = localStorage.getItem('isAuth') === 'true'
     if(isAuthenticated){
-      setIsAuth(true)
+      setIsAuthenticated(true)
       navigate('/admin')
     }
   },[])

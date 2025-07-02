@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
 
-    const { setIsAuth } = useContext(CartContext)
+    const { setIsAuthenticated } = useContext(CartContext)
     // const [open, setOpen] = useState(false);
 
     const {
@@ -36,7 +36,7 @@ const Admin = () => {
                         <ul className="nav">
                             <li className="navItem">
                                 <button className="navButton" onClick={() => {
-                                    setIsAuth(false);
+                                    setIsAuthenticated(false);
                                     navigate('/');
                                     localStorage.removeItem('isAuth');
                                 }}>
