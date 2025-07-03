@@ -18,21 +18,12 @@ div .navBar ul {
 
 
 
-/* .navItem,
-.navButton {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
-}  */
 
 .navButton i {
   font-size: 1.2rem;
 }
 
-/* Lista de productos */
+
 .list {
     list-style: none; 
     padding: 0; 
@@ -55,7 +46,7 @@ div .navBar ul {
     margin: 0 12px;
 }
 
-/* Estilos para la imagen del producto */
+
 .listItem .imagen {
     width: 80px;
     height: 80px;
@@ -66,15 +57,7 @@ div .navBar ul {
 }
 
 
-/* .imagen {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-right: 1rem;
-} */
 
-/* Botones */
 .editButton,
 .deleteButton {
   margin-left: 0.5rem;
@@ -130,8 +113,8 @@ div .navBar ul {
 
   .listItem {
   display: flex;
-  flex-direction: column; /* 👈 Esto los apila verticalmente */
-  align-items: center;     /* Centra horizontalmente */
+  flex-direction: column; 
+  align-items: center;    
   gap: 0.5rem;
   padding: 1rem;
   background-color: #f9f9f9;

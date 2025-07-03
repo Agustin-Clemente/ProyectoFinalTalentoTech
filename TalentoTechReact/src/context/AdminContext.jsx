@@ -20,8 +20,13 @@ export const AdminProvider = ({ children }) => {
                 }, 2000);
             })
             .catch((error) => {
+                Swal.fire({
+                    title: 'Ocurrió un error',
+                    text: error.message || 'No se pudieron cargar los productos',
+                    icon: 'error',
+                    confirmButtonColor: '#d33'
+                });
                 console.error("Error fetching data:", error);
-                setError(true);
                 setLoading(false);
             });
     }, []);
@@ -32,6 +37,14 @@ export const AdminProvider = ({ children }) => {
             const data = await res.json()
             setProductos(data)
         } catch (error) {
+            setLoading(false)
+            Swal.fire({
+                title: 'Ocurrió un error',
+                text: error.message || 'No se pudieron cargar los productos',
+                icon: 'error',
+                confirmButtonColor: '#d33'
+            });
+
             console.log('Error al cargar productos ', error);
 
         }
@@ -47,6 +60,12 @@ export const AdminProvider = ({ children }) => {
                 body: JSON.stringify(producto)
             })
             if (!respuesta.ok) {
+                Swal.fire({
+                    title: 'Ocurrió un error',
+                    text: error.message || 'No se pudo agregar el producto',
+                    icon: 'error',
+                    confirmButtonColor: '#d33'
+                });
                 throw new Error('Error al agregar producto')
             }
             const data = await respuesta.json()
@@ -73,7 +92,15 @@ export const AdminProvider = ({ children }) => {
                     },
                     body: JSON.stringify(producto)
                 })
-            if (!respuesta.ok) throw Error('Error al actualizar el producto')
+            if (!respuesta.ok) {
+                Swal.fire({
+                    title: 'Ocurrió un error',
+                    text: error.message || 'No se pudo editar el producto',
+                    icon: 'error',
+                    confirmButtonColor: '#d33'
+                });
+                throw new Error('Error al editar producto')
+            }
             const data = await respuesta.json()
             Swal.fire({
                 text: "Producto editado correctamente!",
@@ -104,8 +131,16 @@ export const AdminProvider = ({ children }) => {
                     const respuesta = await fetch(`${apiUrl}/${id}`, {
                         method: 'DELETE',
                     });
-                    if (!respuesta.ok) throw Error('Error al eliminar');
-                    
+                    if (!respuesta.ok) {
+                        Swal.fire({
+                            title: 'Ocurrió un error',
+                            text: error.message || 'No se pudo eliminar el producto',
+                            icon: 'error',
+                            confirmButtonColor: '#d33'
+                        });
+                        throw new Error('Error al eliminar producto')
+                    }
+
                     Swal.fire({
                         text: "Producto Eliminado correctamente!",
                         icon: "error",

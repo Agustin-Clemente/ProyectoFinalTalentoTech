@@ -10,14 +10,14 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const { setIsAuthenticated } = useContext(CartContext)
 
-  useEffect(()=>{
+  useEffect(() => {
     const isAuthenticated = localStorage.getItem('isAuth') === 'true'
-    if(isAuthenticated){
+    if (isAuthenticated) {
       setIsAuthenticated(true)
       navigate('/admin')
     }
-  },[])
-  
+  }, [])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let validationErrors = {};
@@ -41,9 +41,9 @@ export const AuthProvider = ({ children }) => {
         setErrors({ email: 'credenciales invalidas' });
       } else {
         console.log('User role:', foundUser.role);
-        
+
         if (foundUser.role === 'admin') {
-          setIsAuth(true);
+          setIsAuthenticated(true);
           localStorage.setItem('isAuth', true)
           navigate('/admin');
         } else {
@@ -55,10 +55,10 @@ export const AuthProvider = ({ children }) => {
       setErrors({ email: 'Algo salió mal. Por favor, inténtalo de nuevo más tarde.' });
     }
   };
- 
+
 
   return (
-    <AuthContext.Provider value={{email, setEmail,password, setPassword, handleSubmit,errors}}>
+    <AuthContext.Provider value={{ email, setEmail, password, setPassword, handleSubmit, errors }}>
       {children}
     </AuthContext.Provider>
   );

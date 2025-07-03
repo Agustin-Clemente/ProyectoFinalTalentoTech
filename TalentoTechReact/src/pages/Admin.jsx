@@ -9,7 +9,6 @@ import "./adminStyle.css";
 const Admin = () => {
 
     const { setIsAuthenticated } = useContext(CartContext)
-    // const [open, setOpen] = useState(false);
 
     const {
         productos,
@@ -18,10 +17,7 @@ const Admin = () => {
         setOpen,
         openEditor,
         setOpenEditor,
-        seleccionado,
         setSeleccionado,
-        agregarProducto,
-        actualizarProducto,
         eliminarProducto,
     } = useContext(AdminContext)
 
@@ -34,8 +30,7 @@ const Admin = () => {
             ) : (
                 <>
                     <div className="navBar">
-                        <ul >
-
+                        <ul>
                             <li >
                                 <span >Admin</span>
                             </li>
@@ -52,8 +47,8 @@ const Admin = () => {
                     </div>
                     <h1 className="encabezado">Panel Administrativo</h1>
                     <button className="agregarBtn" onClick={() => setOpen(true)}>Agregar producto nuevo</button>
-                    {open && (<FormularioProducto onAgregar={agregarProducto} />)}
-                    {openEditor && (<FormularioEdicion productoSeleccionado={seleccionado} onActualizar={actualizarProducto} />)}
+                    {open && (<FormularioProducto/>)}
+                    {openEditor && (<FormularioEdicion />)}
                     <ul className="list">
                         {productos.map((product) => (
                             <li key={product.id} className='listItem'>

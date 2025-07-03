@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AdminContext } from "../../context/AdminContext";
 
-function FormularioProducto({ onAgregar }) {
+
+function FormularioProducto() {
+
+    const { agregarProducto } = useContext(AdminContext);
+    
     const [producto, setProducto] = useState({
         nombre: '',
         precio: '',
@@ -39,7 +44,7 @@ function FormularioProducto({ onAgregar }) {
         if (!validarFormulario()) {
             return;
         }
-        onAgregar(producto); 
+        agregarProducto(producto); 
         setProducto({
             nombre: '',
             precio: '',

@@ -3,7 +3,7 @@ import Header from '../components/estaticos/Header'
 import Footer from '../components/estaticos/Footer'
 import '../components/estaticos/styleEstatico.css'
 
-const AcercaDe = ({ carrito, eliminarDelCarrito, vaciarCarrito }) => {
+const AcercaDe = () => {
   return (
     <>
       <Header />

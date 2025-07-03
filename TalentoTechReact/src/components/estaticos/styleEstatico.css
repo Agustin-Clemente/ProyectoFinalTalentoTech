@@ -45,14 +45,6 @@ nav ul {
     background-color: rgb(86, 74, 250);
 }
 
-/* .activo{
-    color:white;
-    text-decoration: none;
-    border-radius: 12px;
-    padding: 12px 16px;
-    background-color: rgb(86, 74, 250);
-} */
-
 .activo:hover{
     color:  rgb(86, 74, 250);
     text-decoration: none;

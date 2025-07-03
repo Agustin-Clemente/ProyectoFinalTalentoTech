@@ -5,7 +5,7 @@ import ProductList from '../components/ProductList'
 import Spinner from '../components/estaticos/Spinner'
 import { CartContext } from '../context/CartContext'
 
-const Home = ({ agregarAlCarrito}) => {
+const Home = () => {
 
   const {cargando} = useContext(CartContext)
 

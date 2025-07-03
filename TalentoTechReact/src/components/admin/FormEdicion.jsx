@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AdminContext } from "../../context/AdminContext";
 
-function FormularioEdicion({ productoSeleccionado, onActualizar }) {
-    const [producto, setProducto] = useState(productoSeleccionado);
+function FormularioEdicion() {
 
-    useEffect(()=>{
-        setProducto(productoSeleccionado)
-    },[productoSeleccionado])
+    const { seleccionado, actualizarProducto } = useContext(AdminContext);
+
+    const [producto, setProducto] = useState(seleccionado);
+
+    
+
+    useEffect(() => {
+        setProducto(seleccionado)
+    }, [seleccionado])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -13,9 +19,9 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
 
     };
 
-        const [errores, setErrores] = useState({});
-    
-        const validarFormulario = () => {
+    const [errores, setErrores] = useState({});
+
+    const validarFormulario = () => {
         const nuevosErrores = {};
         if (!producto.nombre.trim()) {
             nuevosErrores.nombre = 'El nombre es obligatorio.';
@@ -29,14 +35,14 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
         setErrores(nuevosErrores);
         return Object.keys(nuevosErrores).length === 0;
     };
-    
+
     return (
         <form noValidate onSubmit={(e) => {
             e.preventDefault();
             if (!validarFormulario()) {
-            return;
-        }
-            onActualizar(producto)
+                return;
+            }
+            actualizarProducto(producto)
         }}>
             <h2>Editar Producto</h2>
             <div>

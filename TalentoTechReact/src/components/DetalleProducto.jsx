@@ -8,8 +8,6 @@ import { CartContext } from '../context/CartContext';
 const DetalleProducto = () => {
 
     const {productos, agregarAlCarrito} = useContext(CartContext);
-      
-    
 
     const { id } = useParams();
     const producto = productos.find(item => item.id === id);
@@ -56,10 +54,7 @@ const DetalleProducto = () => {
                             <button className='cantidadBtn' onClick={() => agregarAlCarrito(producto, cantidad)}>Añadir al carrito</button>
                             <button className='cantidadBtn' style={{ marginTop: '12px' }}><Link to="/" style={{ color: 'white' }}>Volver al inicio</Link></button>
                         </section>
-
-
                     </>
-
                 ) : (
                     <>
                         <p>Producto no encontrado</p>
