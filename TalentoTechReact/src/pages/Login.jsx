@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 
+
 const Login = () => {
 
   const { setIsAuthenticated } = useContext(CartContext);
@@ -11,8 +12,6 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   
-  // const {email, setEmail,password, setPassword, handleSubmit,errors} = useAuth()
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -52,14 +51,21 @@ const Login = () => {
   };
 
   return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+    }}>
     <form
       onSubmit={handleSubmit}
       style={{
         display: 'flex',
-        flexDirection: 'column',
-        gap: '1rem',
-        maxWidth: '400px',
-        margin: 'auto',
+      flexDirection: 'column',
+      gap: '1rem',
+      maxWidth: '400px',
+      width: '100%',          
+      margin: 'auto'
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -123,6 +129,7 @@ const Login = () => {
         Submit
       </button>
     </form>
+    </div>
   );
 };
 

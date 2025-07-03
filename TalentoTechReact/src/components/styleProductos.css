@@ -9,7 +9,7 @@
     transition: box-shadow 0.3s ease;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     color:#333;
-    width: 200px;
+    width: 250px;
 }
 
 .card-detalle{
@@ -106,4 +106,19 @@ main{
     flex-wrap: wrap;
     gap: 16px;
     justify-content: space-evenly;
+}
+
+.buscador {
+    width: 90%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+.buscador:focus {
+    outline: none;
+    border:2px solid #1565c0;
+    border-color: #1565c0;
 }

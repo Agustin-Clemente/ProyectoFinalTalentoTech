@@ -15,7 +15,7 @@ const Home = ({ agregarAlCarrito}) => {
     <>
       <Header  />
       <main>
-        <h1>Bienvenido a nuestro sitio web</h1>
+        <h1>Te damos la bienvenida a Formality</h1>
         <p>Explora nuestros productos.</p>
 
 {

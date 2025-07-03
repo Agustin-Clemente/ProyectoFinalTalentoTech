@@ -4,6 +4,7 @@ import FormularioEdicion from "../components/admin/FormEdicion";
 import { CartContext } from "../context/CartContext";
 import { AdminContext } from "../context/AdminContext";
 import { useNavigate } from "react-router-dom";
+import "./adminStyle.css";
 
 const Admin = () => {
 
@@ -21,20 +22,24 @@ const Admin = () => {
         setSeleccionado,
         agregarProducto,
         actualizarProducto,
-        eliminarProducto, 
+        eliminarProducto,
     } = useContext(AdminContext)
 
     const navigate = useNavigate()
 
     return (
-        <div className="container">
+        <div>
             {loading ? (
                 <p>Cargando...</p>
             ) : (
                 <>
-                    <nav>
-                        <ul className="nav">
-                            <li className="navItem">
+                    <div className="navBar">
+                        <ul >
+
+                            <li >
+                                <span >Admin</span>
+                            </li>
+                            <li >
                                 <button className="navButton" onClick={() => {
                                     setIsAuthenticated(false);
                                     navigate('/');
@@ -43,20 +48,19 @@ const Admin = () => {
                                     <i className="fa-solid fa-right-from-bracket"></i>
                                 </button>
                             </li>
-                            <li className="navItem">
-                                <a href="/admin">Admin</a>
-                            </li>
                         </ul>
-                    </nav>
-                    <h1 className="title">Panel Administrativo</h1>
-
+                    </div>
+                    <h1 className="encabezado">Panel Administrativo</h1>
+                    <button className="agregarBtn" onClick={() => setOpen(true)}>Agregar producto nuevo</button>
+                    {open && (<FormularioProducto onAgregar={agregarProducto} />)}
+                    {openEditor && (<FormularioEdicion productoSeleccionado={seleccionado} onActualizar={actualizarProducto} />)}
                     <ul className="list">
                         {productos.map((product) => (
-                            <li key={product.id} className="listItem">
+                            <li key={product.id} className='listItem'>
                                 <img
                                     src={product.foto}
                                     alt={product.nombre}
-                                    className="listItemImage"
+                                    className="imagen"
                                 />
                                 <span>{product.nombre}</span>
                                 <span>${product.precio}</span>
@@ -64,18 +68,17 @@ const Admin = () => {
                                     <button className="editButton" onClick={() => {
                                         setOpenEditor(true)
                                         setSeleccionado(product)
-                                    }}>Editar</button>
+                                        window.scrollTo({ top: 20, behavior: 'smooth' });
+                                    }}><i className="fa-solid fa-pencil"></i></button>
 
-                                    <button className="deleteButton" onClick={() => eliminarProducto(product.id)}>Eliminar</button>
+                                    <button className="deleteButton" onClick={() => eliminarProducto(product.id)}><i className="fa-solid fa-trash"></i></button>
                                 </div>
                             </li>
                         ))}
                     </ul>
                 </>
             )}
-            <button onClick={() => setOpen(true)}>Agregar producto nuevo</button>
-            {open && (<FormularioProducto onAgregar={agregarProducto} />)}
-            {openEditor && (<FormularioEdicion productoSeleccionado={seleccionado} onActualizar={actualizarProducto} />)}
+
         </div>
     );
 };

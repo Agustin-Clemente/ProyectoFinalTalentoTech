@@ -65,14 +65,14 @@ const agregarAlCarrito = (producto, cantidad) => {
           position: "bottom-right"
         });
 
-    Swal.fire({
+    /* Swal.fire({
   title: "¡Producto agregado!",
   icon: "success",
   draggable: true,
   confirmButtonText: "Aceptar",
   confirmButtonColor: "#1565c0",
   background: "#f0f0f0",
-});
+}); */
     setCarrito(prevCarrito => {
       const productoExistente = prevCarrito.find(item => item.id === producto.id);
       if (productoExistente) {
@@ -103,11 +103,11 @@ const agregarAlCarrito = (producto, cantidad) => {
           position: "bottom-right"
         });
 
-      Swal.fire({
+      /* Swal.fire({
         title: "Producto eliminado",
         icon: "success",
         confirmButtonColor: "#1565c0"
-      });
+      }); */
       setCarrito(prevCarrito => {
         return prevCarrito.filter(item => item.id !== producto.id);
       });
@@ -127,7 +127,7 @@ const agregarAlCarrito = (producto, cantidad) => {
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: "Carrito vaciado",
+        title: "Carrito eliminado",
         icon: "success",
         confirmButtonColor: "#1565c0"
       });
@@ -136,6 +136,17 @@ const agregarAlCarrito = (producto, cantidad) => {
     }
   });
   }
+
+  const comprar = () => {
+
+    Swal.fire({
+      title: "Compra realizada con éxito",
+      icon: "success",
+      confirmButtonColor: "#1565c0"
+    });
+
+    setCarrito([]);
+  } 
 
   return (
     <CartContext.Provider value={{ 
@@ -150,7 +161,8 @@ const agregarAlCarrito = (producto, cantidad) => {
         setIsAuthenticated,
         busqueda,
         setBusqueda,
-        productosFiltrados
+        productosFiltrados,
+        comprar
      }}>
       {children}
     </CartContext.Provider>

@@ -4,7 +4,7 @@ import { CartContext } from '../context/CartContext'
 
 const Carrito = ({ isOpen, onClose }) => {
 
-      const { carrito, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);
+      const { carrito, eliminarDelCarrito, vaciarCarrito, comprar } = useContext(CartContext);
 
 
     const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
@@ -39,7 +39,7 @@ const Carrito = ({ isOpen, onClose }) => {
                         <h3>Total: ${total.toFixed(2)}</h3>
 
 
-                        <button className='finalizar-compraBtn'>Finalizar Compra</button>
+                        <button className='finalizar-compraBtn' onClick={comprar}>Finalizar Compra</button>
 
 
                         <button className='btn-carrito' style={{ marginTop: '12px' }} onClick={() => vaciarCarrito()}>Vaciar carrito</button>
