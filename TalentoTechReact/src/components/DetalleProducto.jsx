@@ -33,7 +33,7 @@ const DetalleProducto = () => {
             <Header />
 
             <main>
-                <h1>Detalles del producto: {id}</h1>
+                <h1>Detalles del producto</h1>
                 {producto ? (
 
                     <>

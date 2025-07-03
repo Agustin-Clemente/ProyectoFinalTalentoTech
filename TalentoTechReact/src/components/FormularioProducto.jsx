@@ -21,7 +21,7 @@ const handleChange = (e) => {
     if (!producto.precio) errores.precio = "El precio es requerido";
     if (!producto.stock) errores.stock = "El stock es requerido";
     if (!producto.foto) errores.foto = "La foto es requerida";
-    if (!producto.descripcionLarga) errores.descripcionLarga = "La descripción larga es requerida";
+    if (!producto.descripcionLarga) errores.descripcionLarga = "La descripción es requerida";
     setErrores(errores);
     return Object.keys(errores).length === 0;
   };
@@ -86,7 +86,7 @@ const handleChange = (e) => {
           {errores.foto && <p>{errores.foto}</p>}
         </div>
         <div>
-          <label>Descripción Larga</label>
+          <label>Descripción</label>
           <textarea
             name="descripcionLarga"
             value={producto.descripcionLarga}

@@ -12,22 +12,33 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
         setProducto({ ...producto, [name]: value });
 
     };
+
+        const [errores, setErrores] = useState({});
+    
+        const validarFormulario = () => {
+        const nuevosErrores = {};
+        if (!producto.nombre.trim()) {
+            nuevosErrores.nombre = 'El nombre es obligatorio.';
+        }
+        if (!producto.precio || producto.precio <= 0) {
+            nuevosErrores.precio = 'El precio debe ser mayor a 0.';
+        }
+        if (!producto.descripcionLarga.trim() || producto.descripcionLarga.length < 10) {
+            nuevosErrores.descripcionLarga = 'La descripción debe tener al menos 10 caracteres.';
+        }
+        setErrores(nuevosErrores);
+        return Object.keys(nuevosErrores).length === 0;
+    };
+    
     return (
-        <form onSubmit={(e)=>{
-            e.preventDefault()
+        <form noValidate onSubmit={(e) => {
+            e.preventDefault();
+            if (!validarFormulario()) {
+            return;
+        }
             onActualizar(producto)
         }}>
             <h2>Editar Producto</h2>
-            {/* <div>
-                <label>ID:</label>
-                <input
-                    type="number"
-                    name="id"
-                    value={producto.id || ''}
-                    onChange={handleChange}
-                    readOnly
-                />
-            </div> */}
             <div>
                 <label>Nombre:</label>
                 <input

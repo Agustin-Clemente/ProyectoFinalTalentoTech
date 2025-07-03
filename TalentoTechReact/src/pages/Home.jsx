@@ -16,7 +16,8 @@ const Home = ({ agregarAlCarrito}) => {
       <Header  />
       <main>
         <h1>Te damos la bienvenida a Formality</h1>
-        <p>Explora nuestros productos.</p>
+        <h2>Somos una tienda especializada en brindar indumentaria y accesorios de calidad para personas de buen gusto, destacando estilos clásicos para toda ocasión</h2>
+        <h3>Explora nuestros productos.</h3>
 
 {
           cargando ? (

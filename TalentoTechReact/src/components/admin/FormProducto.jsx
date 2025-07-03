@@ -5,8 +5,8 @@ function FormularioProducto({ onAgregar }) {
         nombre: '',
         precio: '',
         stock: '',
-        imagen: '',
-        categoria: '',
+        foto: '',
+        descripcionLarga: '',
     });
     const [errores, setErrores] = useState({});
     
@@ -24,8 +24,11 @@ function FormularioProducto({ onAgregar }) {
         if (!producto.precio || producto.precio <= 0) {
             nuevosErrores.precio = 'El precio debe ser mayor a 0.';
         }
-        if (!producto.categoria.trim() || producto.categoria.length < 5) {
-            nuevosErrores.categoria = 'La categoria debe tener al menos 5 caracteres.';
+        if (!producto.stock || producto.stock <= 0) {
+            nuevosErrores.stock = 'El stock debe ser mayor a 0.';
+        }
+        if (!producto.descripcionLarga.trim() || producto.descripcionLarga.length < 10) {
+            nuevosErrores.descripcionLarga = 'La descripción debe tener al menos 10 caracteres.';
         }
         setErrores(nuevosErrores);
         return Object.keys(nuevosErrores).length === 0;
@@ -36,18 +39,18 @@ function FormularioProducto({ onAgregar }) {
         if (!validarFormulario()) {
             return;
         }
-        onAgregar(producto); // Llamada a la función para agregar el producto
+        onAgregar(producto); 
         setProducto({
             nombre: '',
             precio: '',
             stock: '',
-            imagen: '',
-            categoria: '',
-        }); // Limpiar el formulario
+            foto: '',
+            descripcionLarga: '',
+        });
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form noValidate onSubmit={handleSubmit}>
             <h2>Agregar Producto</h2>
             <div>
                 <label>Nombre:</label>
@@ -69,31 +72,32 @@ function FormularioProducto({ onAgregar }) {
                     name="stock"
                     value={producto.stock || ''}
                     onChange={handleChange}
+                    min="0"
                     required
                 />
                 {errores.stock && <p style={{ color: 'red' }}>{errores.stock}</p>}
             </div>
             <div>
-                <label>Imagen URL:</label>
+                <label>Foto:</label>
                 <input
                     type="text"
-                    name="imagen"
-                    value={producto.imagen || ''}
+                    name="foto"
+                    value={producto.foto || ''}
                     onChange={handleChange}
                     required
                 />
-                {errores.imagen && <p style={{ color: 'red' }}>{errores.imagen}</p>}
+                {errores.foto && <p style={{ color: 'red' }}>{errores.foto}</p>}
             </div>
             <div>
-                <label>Categoría:</label>
+                <label>Descripción:</label>
                 <input
                     type="text"
-                    name="categoria"
-                    value={producto.categoria || ''}
+                    name="descripcionLarga"
+                    value={producto.descripcionLarga || ''}
                     onChange={handleChange}
                     required
                 />
-                {errores.categoria && <p style={{ color: 'red' }}>{errores.categoria}</p>}
+                {errores.descripcionLarga && <p style={{ color: 'red' }}>{errores.descripcionLarga}</p>}
             </div>
 
             <button type="submit">Agregar Producto</button>

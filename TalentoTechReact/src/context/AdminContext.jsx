@@ -51,9 +51,9 @@ export const AdminProvider = ({ children }) => {
             }
             const data = await respuesta.json()
             Swal.fire({
-                title: ":)!",
                 text: "Producto agregado correctamente!",
-                icon: "success"
+                icon: "success",
+                confirmButtonColor: "#1565c0",
             });
             cargarProductos()
             setOpen(false)
@@ -75,7 +75,11 @@ export const AdminProvider = ({ children }) => {
                 })
             if (!respuesta.ok) throw Error('Error al actualizar el producto')
             const data = await respuesta.json()
-            alert('Producto actualizado correctamente')
+            Swal.fire({
+                text: "Producto editado correctamente!",
+                icon: "success",
+                confirmButtonColor: "#1565c0",
+            });
             setOpenEditor(false)
             setSeleccionado(null)
             cargarProductos()
@@ -86,24 +90,33 @@ export const AdminProvider = ({ children }) => {
     }
 
     const eliminarProducto = async (id) => {
-        const confirmar = window.confirm('Estas seguro de eliminar el producto?')
-        if (confirmar) {
-            try {
-                const respuesta = await fetch(`${apiUrl}/${id}`, {
-                    method: 'DELETE',
-                })
-                if (!respuesta.ok) throw Error('Error al eliminar')
-                
-                Swal.fire({
-                    title: ":(!",
-                    text: "Producto Eliminado correctamente!",
-                    icon: "error"
-                });
-                cargarProductos()
-            } catch (error) {
-                alert('Hubo un problema al eliminar el producto')
+        Swal.fire({
+            title: "¿Confirmas que deseas eliminar este producto?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#1565c0",
+            cancelButtonColor: "#d32f2f",
+            confirmButtonText: "Si, eliminalo",
+            cancelButtonText: "Cancelar"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const respuesta = await fetch(`${apiUrl}/${id}`, {
+                        method: 'DELETE',
+                    });
+                    if (!respuesta.ok) throw Error('Error al eliminar');
+                    
+                    Swal.fire({
+                        text: "Producto Eliminado correctamente!",
+                        icon: "error",
+                        confirmButtonColor: "#1565c0",
+                    });
+                    cargarProductos();
+                } catch (error) {
+                    alert('Hubo un problema al eliminar el producto');
+                }
             }
-        }
+        });
     }
 
     return (

@@ -44,9 +44,9 @@ main{
 }
 
 .imagenContainer-detalle {
-    width: 50%;
+    max-width: 400px;
     background-color: #fff;
-    overflow: hidden;
+    /* overflow: hidden; */
     border-radius: 16px;
     margin-bottom: 12px;
     display: flex;
